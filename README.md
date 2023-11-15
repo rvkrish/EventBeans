@@ -13,12 +13,12 @@
 - cd EventBeans
 - bundle install
 - rake db:migrate
-- add .env on your root directory and add below test keys
-CAMPAIN_ID=1234
-BASE_URI=https://api.iterable.com/api
-EVENT_TRACK_URI=/events/track
-EVENT_TARGET_URI=/email/target
-ITERABLE_API_KEY="random_key"
+- add .env on your root directory and add below test keys<br />
+CAMPAIN_ID=1234<br />
+BASE_URI=https://api.iterable.com/api<br />
+EVENT_TRACK_URI=/events/track<br />
+EVENT_TARGET_URI=/email/target<br />
+ITERABLE_API_KEY="random_key"<br />
 - rails s
 
 
