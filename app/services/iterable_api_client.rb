@@ -10,36 +10,30 @@ class IterableApiClient
     self.email_uri = URI("#{ENV["BASE_URI"]}#{ENV["EVENT_TARGET_URI"]}")
   end
 
+  # This methods helps us interact with API and creating the event
   def create_event(user_email, event_type)
     return unless valid_email?(user_email)
-
-    request = Net::HTTP::Post.new(event_uri)
-    request["Api-Key"] = api_key
-    request.content_type = "application/json"
-    request.body = {
-      email: user_email, eventName: event_type,
-    }.to_json
-    Net::HTTP.start(event_uri.hostname, event_uri.port, use_ssl: event_uri.scheme == "https") do |http|
-      http.request(request)
-    end
+    request_to_api(event_uri,  { email: user_email, eventName: event_type })
   end
 
+  # This method helps to send the email when event b is clicked.
   def send_email(user_email, campaign_id)
     return unless valid_email?(user_email)
-
-    request = Net::HTTP::Post.new(email_uri)
-    request["Api-Key"] = api_key
-    request.content_type = "application/json"
-    request.body = {
-      recipientEmail: user_email, campaignId: campaign_id,
-    }.to_json
-
-    Net::HTTP.start(email_uri.hostname, email_uri.port, use_ssl: email_uri.scheme == "https") do |http|
-      http.request(request)
-    end
+    request_to_api(email_uri, { recipientEmail: user_email, campaignId: campaign_id })
   end
 
   private
+
+  #This method handle api request
+  def request_to_api(uri, body)
+    request = Net::HTTP::Post.new(email_uri)
+    request["Api-Key"] = api_key
+    request.content_type = "application/json"
+    request.body = body.to_json
+    Net::HTTP.start(uri.hostname, email_uri.port, use_ssl: email_uri.scheme == "https") do |http|
+      http.request(request)
+    end
+  end
 
   def valid_email?(email)
     email =~ URI::MailTo::EMAIL_REGEXP

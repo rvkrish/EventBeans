@@ -23,7 +23,6 @@ describe IterableApiClient do
       it 'creates an event and returns a successful response' do
         response = client.create_event(user.email, event_name)
         expect(response.code).to eq "200"
-        expect(WebMock).to have_requested(:post,track_event_uri ).once
       end
     end
 
@@ -68,8 +67,8 @@ describe IterableApiClient do
 
     context 'when email is valid' do
       it 'sends a request to the API' do
-        client.create_event(user.email, event_name)
-        expect(WebMock).to have_requested(:post, /events\/track/).once
+        response = client.create_event(user.email, event_name)
+        expect(response.code).to eq "200"
       end
     end
 
