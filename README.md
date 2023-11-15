@@ -25,8 +25,12 @@ ITERABLE_API_KEY="random_key"
 ## Usage
 
 - By default application will be redirected to login page.
+  <img src='https://github.com/rvkrish/EventBeans/blob/e33fabd34ee8bec058bdec7d7b8e1b1e9c3cc08f/public/screenshots/Login.png' width='400'>
+
 - You need to register to access the tool.
+  <img src='https://github.com/rvkrish/EventBeans/blob/e33fabd34ee8bec058bdec7d7b8e1b1e9c3cc08f/public/screenshots/Register.png' width='400'>
 - Once registered you will be able to see the buttons to click for creating events
+  <img src='https://github.com/rvkrish/EventBeans/blob/e33fabd34ee8bec058bdec7d7b8e1b1e9c3cc08f/public/screenshots/home.png' width='400'>
 
 ## RSpec and Test coverage.
 
