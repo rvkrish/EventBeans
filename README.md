@@ -56,6 +56,7 @@ where i have covered following scenarios
 
 
 ## Features
-- I have implemented the code but it wont work until we have a proper api key from https://api.iterable.com/api/doc 
+- I have implemented the code but it wont work until we have a proper api key from https://api.iterable.com/api/doc
+- Used Webmock gem for mocking the API's
 
 
