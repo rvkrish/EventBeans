@@ -47,6 +47,7 @@ where i have covered following scenarios
     - when provided empty event name.
     - When provided invalid email how service method respond both while event creation and mail creation.
     - When invalid or empty campain id is provided. 
+    - When no API KEY or Invalid API KEY provided.
 
 
 ## Features

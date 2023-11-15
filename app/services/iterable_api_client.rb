@@ -7,13 +7,13 @@ class IterableApiClient
   def initialize(api_key)
     self.api_key = api_key
     self.event_uri = URI("#{ENV["BASE_URI"]}#{ENV["EVENT_TRACK_URI"]}")
-    self.email_uri = URI("#{ENV["BASE_URI"]}#{ENV["EVENT_TARGET_URI"]}")
+    self.email_uri = URI("#{ENV["BASE_URI"]}#{ENV["EMAIL_TARGET_URI"]}")
   end
 
   # This methods helps us interact with API and creating the event
   def create_event(user_email, event_type)
     return unless valid_email?(user_email)
-    request_to_api(event_uri,  { email: user_email, eventName: event_type })
+    request_to_api(event_uri, { email: user_email, eventName: event_type })
   end
 
   # This method helps to send the email when event b is clicked.
@@ -30,7 +30,7 @@ class IterableApiClient
     request["Api-Key"] = api_key
     request.content_type = "application/json"
     request.body = body.to_json
-    Net::HTTP.start(uri.hostname, email_uri.port, use_ssl: email_uri.scheme == "https") do |http|
+    Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
       http.request(request)
     end
   end
