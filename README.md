@@ -12,21 +12,26 @@
 - git clone https://github.com/rvkrish/EventBeans.git
 - cd EventBeans
 - bundle install
+- rake db:create
 - rake db:migrate
-- add .env on your root directory and add below test keys
-CAMPAIN_ID=1234
-BASE_URI=https://api.iterable.com/api
-EVENT_TRACK_URI=/events/track
-EVENT_TARGET_URI=/email/target
-ITERABLE_API_KEY="random_key"
+- add .env on your root directory and add below test keys<br />
+CAMPAIN_ID=1234<br />
+BASE_URI=https://api.iterable.com/api<br />
+EVENT_TRACK_URI=/events/track<br />
+EVENT_TARGET_URI=/email/target<br />
+ITERABLE_API_KEY="random_key"<br />
 - rails s
 
 
 ## Usage
 
-- By default application will be redirected to login page.
-- You need to register to access the tool.
-- Once registered you will be able to see the buttons to click for creating events
+- By default application will be redirected to login page. <br />
+  <img src='https://github.com/rvkrish/EventBeans/blob/e33fabd34ee8bec058bdec7d7b8e1b1e9c3cc08f/public/screenshots/Login.png' width='400'>
+
+- You need to register to access the tool.<br />
+  <img src='https://github.com/rvkrish/EventBeans/blob/e33fabd34ee8bec058bdec7d7b8e1b1e9c3cc08f/public/screenshots/Register.png' width='400'>
+- Once registered you will be able to see the buttons to click for creating events<br />
+  <img src='https://github.com/rvkrish/EventBeans/blob/e33fabd34ee8bec058bdec7d7b8e1b1e9c3cc08f/public/screenshots/home.png' width='400'>
 
 ## RSpec and Test coverage.
 
@@ -42,9 +47,9 @@ where i have covered following scenarios
     - Event creation fails.
   - API Service
     - When API responds for event creation with success.
-    - when API responds for event creation with fail.
-    - when Provided invalid event name.
-    - when provided empty event name.
+    - When API responds for event creation with fail.
+    - When Provided invalid event name.
+    - When provided empty event name.
     - When provided invalid email how service method respond both while event creation and mail creation.
     - When invalid or empty campain id is provided. 
     - When no API KEY or Invalid API KEY provided.
