@@ -12,6 +12,7 @@
 - git clone https://github.com/rvkrish/EventBeans.git
 - cd EventBeans
 - bundle install
+- rake db:create
 - rake db:migrate
 - add .env on your root directory and add below test keys<br />
 CAMPAIN_ID=1234<br />
