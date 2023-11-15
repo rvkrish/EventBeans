@@ -47,9 +47,9 @@ where i have covered following scenarios
     - Event creation fails.
   - API Service
     - When API responds for event creation with success.
-    - when API responds for event creation with fail.
-    - when Provided invalid event name.
-    - when provided empty event name.
+    - When API responds for event creation with fail.
+    - When Provided invalid event name.
+    - When provided empty event name.
     - When provided invalid email how service method respond both while event creation and mail creation.
     - When invalid or empty campain id is provided. 
 
