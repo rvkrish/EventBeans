@@ -17,7 +17,7 @@ describe IterableApiClient do
   # Tests for create_event method
   describe "#create_event" do
     context "when successful" do
-      before { stub_valid_iterable_requests }
+      before { stub_with_param_status(:valid_response) }
 
       it "creates an event and returns a successful response" do
         response = client.create_event(user.email, event_name)
@@ -26,7 +26,7 @@ describe IterableApiClient do
     end
 
     context "when unsuccessful" do
-      before { stub_invalid_iterable_requests }
+      before { stub_with_param_status(:invalid_parameters) }
       it "fails to create an event and returns an error response" do
         response = client.create_event(user.email, event_name)
         expect(response.code).to eq "400"
@@ -34,7 +34,7 @@ describe IterableApiClient do
     end
 
     context "when API Key is empty" do
-      before { stub_invalid_iterable_requests_no_api_key }
+      before { stub_with_param_status(:invalid_api_key_body) }
       it "fails to create an event and returns an error response" do
         response = client.create_event(user.email, event_name)
         expect(response.code).to eq "401"
@@ -42,7 +42,7 @@ describe IterableApiClient do
     end
 
     context "when API Key is invalid" do
-      before { stub_invalid_iterable_requests_invalid_api_key }
+      before { stub_with_param_status(:invalid_api_key_body) }
       it "fails to create an event and returns an error response" do
         response = client.create_event(user.email, event_name)
         expect(response.code).to eq "401"
@@ -52,7 +52,7 @@ describe IterableApiClient do
 
   # Testing event name validation
   describe "validating the event name" do
-    before { stub_invalid_iterable_requests }
+    before { stub_with_param_status(:invalid_parameters) }
 
     context "when event name is empty" do
       let(:response_status) { 400 }  # or appropriate status code for this scenario
@@ -76,7 +76,7 @@ describe IterableApiClient do
   end
 
   describe "#create_event" do
-    before { stub_valid_iterable_requests }
+    before { stub_with_param_status(:valid_response) }
 
     context "when email is valid" do
       it "sends a request to the API" do
@@ -102,9 +102,7 @@ describe IterableApiClient do
 
   # Tests for send_email method
   describe "#send_email" do
-    before do
-      stub_request(:post, client.email_uri.to_s).to_return(status: response_status, body: response_body)
-    end
+    before { stub_with_custom_status(client.email_uri.to_s, response_status, response_body) }
 
     context "when email sending is successful" do
       let(:response_status) { 200 }
