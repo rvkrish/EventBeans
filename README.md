@@ -1,4 +1,4 @@
-# Project Name
+# Event Beans
 
 ## Introduction
 - This Project is implemeted based on the requirements given by coffee beans for implementing Event Trigger and Email Notification System.
